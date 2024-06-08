@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+    <title>Registro</title>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <!-- Aquí colocamos la imagen -->
+            <img src="/images/tecnofestpng.png" alt="Hola">
+            <div class="event-info">
+                <h2>TecnoFest</h2>
+                <p>¡La Facultad de Ingenieria en ciencias de la computación te espera este 27 de junio a las 9:00pm!
+
+                    ¡Descubre el futuro en primera fila! Únete a nosotros en nuestro emocionante evento de tecnología donde la innovación cobra vida.
+                    Charlas y eventos que te haran amar la tecnologia en todo su esplendor y el arte de programar,
+                    este evento es tu ventana al mañana. Con conferencias de expertos, demos prácticas y demostraciones de lo que la facultad de icc tiene para ti,
+                    te garantizamos una experiencia que ampliará tus horizontes tecnológicos. No te pierdas la oportunidad de estar en el epicentro de la innovación.
+                    ¡Únete a nosotros y sé parte del cambio!
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="middle">
+                <h1></h1>
+                <!-- Movimos el texto aquí -->
+                <p></p>
+            </div>
+            <form id="registroForm" action="/validar" method="post">
+                <h2>Datos de Registro</h2>
+                <div class="form-container">
+                    <div class="input-container">
+                        Nombre:
+                        <input type="text" name="nombre" id="nombre">
+                    </div>
+                    <div class="input-container">
+                        Teléfono:
+                        <input type="text" name="telefono" id="telefono">
+                    </div>
+                    <div class="input-container">
+                        Nivel Académico:
+                        <select name="nivel" id="nivel">
+                            <option value="medio">Medio</option>
+                            <option value="superior">Superior</option>
+                            <option value="ex-alumno">Ex-Alumno</option>
+                        </select>
+                    </div>
+                </div>
+                <input type="submit" value="Registrar">
+            </form>
+        </div>
+    </div>
+
+    
+    <!-- Agrega jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Agrega SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- Agrega este script para manejar el envío del formulario -->
+    <script>
+    $(document).ready(function(){
+        $('#registroForm').submit(function(event){
+            event.preventDefault();
+
+            // Verifica si los campos están vacíos
+            var nombre = $('#nombre').val().trim();
+            var telefono = $('#telefono').val().trim();
+            var nivel = $('#nivel').val().trim();
+
+            if (nombre === '' || telefono === '' || nivel === '') {
+                // Muestra un mensaje de error si algún campo está vacío
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'No pueden haber datos vacíos'
+                });
+            } else {
+                // Si no hay campos vacíos, procede con el envío del formulario
+                $.ajax({
+                    type: 'POST',
+                    url: '/validar',
+                    data: $(this).serialize(),
+                    success: function(response){
+                        if(response.success){
+                            // Si la inserción es exitosa, muestra la alerta de éxito
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Éxito!',
+                                text: response.message
+                            });
+                            // Limpia los campos de entrada
+                            $('#nombre').val('');
+                            $('#telefono').val('');
+                            $('#nivel').val('');
+                        } else {
+                            // Si hay un error, muestra la alerta de error
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: response.message
+                            });
+                        }
+                    },
+                    error: function(){
+                        // Si hay un error en la solicitud, muestra la alerta de error
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Hubo un error al procesar la solicitud'
+                        });
+                    }
+                });
+            }
+        });
+    });
+    </script>
+
+</body>
+</html>

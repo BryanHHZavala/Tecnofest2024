@@ -1,0 +1,156 @@
+/* public/style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('/images/fondo.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Cubre todo el área del cuerpo */
+    background-position: center; /* Centra la imagen de fondo */
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Ajusta la alineación vertical */
+    flex-wrap: wrap;
+}
+
+.left,
+.right {
+    flex: 1;
+}
+
+.middle {
+    flex: 1;
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+}
+
+h2 {
+    text-align: center; /* Centra el título del formulario */
+}
+
+/* Agregamos estilos para el texto */
+.middle p {
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 10px;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 350px auto 20px; /* Cambia el margen superior a 80px */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+.input-container {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="text"], select {
+    width: calc(100% - 20px); /* Ajusta el ancho de los inputs */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+  
+input[type="submit"] {
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+input[type="submit"]:hover {
+    background: #555;
+}
+
+/* Estilo para las opciones del combobox */
+option {
+    padding: 10px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 4px;
+}
+
+/* Estilo para el combobox */
+select {
+    appearance: none; /* Elimina los estilos predeterminados del sistema */
+    -webkit-appearance: none; /* Para navegadores basados en WebKit */
+    -moz-appearance: none; /* Para navegadores basados en Gecko (Firefox) */
+    background-color: #fff;
+    cursor: pointer;
+}
+
+img {
+    width: 350px; /* Reducimos el ancho de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+.left {
+    display: flex;
+    flex-direction: column; /* Cambiamos la dirección del flexbox a columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+.event-info {
+    text-align: center;
+    margin-top: 20px; /* Ajusta el margen superior para separar la imagen y la información */
+    padding: 20px; /* Agrega relleno para que el contenido no esté pegado al borde */
+    background-color: #ffffff; /* Establece el color de fondo blanco */
+    border-radius: 8px; /* Agrega bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agrega sombra para resaltar */
+}
+
+.event-info h2 {
+    color: #333; /* Cambia el color del texto del título */
+    font-size: 36px; /* Ajusta el tamaño del texto del título */
+    font-weight: bold; /* Hace que el texto del título sea más grueso */
+    margin-bottom: 10px; /* Agrega un espacio inferior al título */
+    text-transform: uppercase; /* Convierte el texto del título a mayúsculas */
+    letter-spacing: 2px; /* Aumenta el espaciado entre letras */
+}
+
+
+.event-info p {
+    color: #555; /* Cambia el color del texto de la descripción */
+    font-size: 18px; /* Ajusta el tamaño del texto de la descripción */
+}
+
+@media only screen and (max-width: 768px) {
+    /* Estilos específicos para pantallas más pequeñas, como tablets */
+    .container {
+      flex-direction: column; /* Cambia la dirección del flexbox a columna */
+      align-items: center; /* Centra los elementos horizontalmente */
+    }
+  
+    .left,
+    .right {
+      width: 100%; /* Establece el ancho al 100% para ocupar toda la pantalla */
+      margin: 20px 0; /* Ajusta el margen para separar los elementos */
+    }
+  
+    .form-container {
+      max-width: 300px; /* Reduce el ancho del formulario en pantallas más pequeñas */
+    }
+  
+    img {
+      width: 250px; /* Redimensiona la imagen para que sea más pequeña en pantallas más pequeñas */
+    }
+}
