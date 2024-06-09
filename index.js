@@ -4,7 +4,7 @@ const Swal = require('sweetalert2');
 const path = require("path");
 const mysql = require("mysql");
 const admin = require("firebase-admin");
-require('dotenv').config();
+require('dotenv').config({ path: 'hola.env' });
 
 const serviceAccount = {
   projectId: process.env.FIREBASE_PROJECT_ID,
